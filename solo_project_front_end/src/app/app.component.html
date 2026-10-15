@@ -1,0 +1,22 @@
+<!--
+  我們創建一個 div 來包裹主內容，並將動態 class 綁定應用於它。
+  這樣，當在登入頁時，這些 class 就不會生效。
+-->
+<div *ngIf="!isFullScreenPage(); else fullScreen" class="main-layout"
+  [class.sidebar-collapsed]="!(isSidebarOpen$ | async)">
+
+  <app-sidebar></app-sidebar>
+
+  <div class="main-content">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>
+
+<!--
+  當 isLoginPage() 為 true 時，顯示這個區塊。
+  它只包含一個 router-outlet，實現全螢幕效果。
+-->
+<ng-template #fullScreen>
+  <router-outlet></router-outlet>
+</ng-template>

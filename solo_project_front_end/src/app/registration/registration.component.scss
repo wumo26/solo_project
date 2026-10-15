@@ -1,0 +1,97 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fdfaf5;
+}
+
+.registration-card {
+  display: flex;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+}
+
+.left-decoration, .right-decoration {
+  position: absolute;
+}
+
+.left-decoration {
+  bottom: 20px;
+  left: 20px;
+}
+
+.right-decoration {
+  top: 20px;
+  right: 20px;
+}
+
+.registration-form {
+  padding: 40px;
+  width: 100%;
+  text-align: center;
+  background-color: #fceae8;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #d38a74;
+  margin-bottom: 10px;
+}
+
+.back-to-login {
+  color: #d38a74;
+  text-decoration: none;
+  margin-bottom: 30px;
+  display: inline-block;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.register-button {
+  background-color: #d38a74;
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  width: 100%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #c0705a;
+  }
+}

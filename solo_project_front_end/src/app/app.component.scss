@@ -1,0 +1,23 @@
+// .main-layout 是我們在非登入頁時的主要容器
+.main-layout {
+  display: flex;
+  transition: all 0.3s ease-in-out;
+
+  .main-content {
+    flex-grow: 1;
+    padding: 20px;
+    margin-left: 250px; // 預設的左邊距 (側邊欄展開時的寬度)
+    transition: margin-left 0.3s ease-in-out; // 為邊距變化添加過渡效果
+  }
+}
+
+// 當側邊欄收合時...
+.main-layout.sidebar-collapsed {
+  .main-content {
+    margin-left: 80px; // 將主內容的左邊距，縮小為收合後的側邊欄寬度
+  }
+}
+
+// 注意：我們不再需要直接控制 app-sidebar 的寬度，
+// 因為這個邏輯應該放在 sidebar.component.scss 內部，
+// 讓元件自己管理自己的樣式。

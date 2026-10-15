@@ -1,0 +1,11 @@
+﻿<div class="stats-container">
+  <div *ngIf="isLoading" class="loading-spinner"><mat-spinner></mat-spinner><p>載入統計資料中…</p></div>
+  <div *ngIf="error" class="error-message"><h2>{{ error }}</h2></div>
+  <div *ngIf="stats && !isLoading">
+    <h1 class="main-title">{{ stats.quizTitle }}</h1><p class="total-submissions">填答人數：{{ stats.totalRespondents }}</p>
+    <div *ngFor="let question of stats.questionStats" class="question-stat-card"><mat-card><mat-card-header><mat-card-subtitle class="question-type-label">{{ getQuestionTypeLabel(question.questionType) }}</mat-card-subtitle><mat-card-title>{{ question.questionNum }}. {{ question.questionTitle }}</mat-card-title></mat-card-header><mat-card-content>
+      <div *ngIf="question.optionStats?.length" class="option-stats"><div *ngFor="let option of question.optionStats" class="option-stat-item"><div class="option-text">{{ option.optionText }}</div><div class="progress-bar-container"><div class="progress-bar" [style.width.%]="option.percentage"></div></div><div class="option-details">{{ option.selectedCount }} 人（{{ option.percentage | number:'1.1-1' }}%）</div></div></div>
+      <div *ngIf="question.textAnswers?.length" class="text-answers"><h4>文字回答</h4><ul><li *ngFor="let answer of question.textAnswers">{{ answer }}</li></ul></div>
+    </mat-card-content></mat-card></div>    <div class="stats-footer"><a mat-button routerLink="/quiz-list">&#36820;&#22238;&#21015;&#34920;</a></div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="registration-card">
+    <div class="registration-form">
+      <h1>創建</h1>
+      <!-- [修改] 使用 routerLink 來確保正確的 SPA 導航 -->
+      <a routerLink="/login" class="back-to-login">返回登入</a>
+
+      <!-- [修改] 綁定 FormGroup 和 ngSubmit 事件 -->
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">姓名</label>
+          <!-- [修改] 綁定 formControlName -->
+          <input type="text" id="name" placeholder="測試人員" formControlName="name">
+          <!-- [新增] 顯示驗證錯誤訊息 -->
+          <div *ngIf="registrationForm.get('name')?.invalid && registrationForm.get('name')?.touched" class="error-message">
+            姓名為必填欄位。
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">信箱</label>
+          <input type="email" id="email" placeholder="test@mail" formControlName="email">
+          <div *ngIf="registrationForm.get('email')?.invalid && registrationForm.get('email')?.touched" class="error-message">
+            請輸入有效的 Email 地址。
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">密碼</label>
+          <input type="password" id="password" placeholder="12345678" formControlName="password">
+          <div *ngIf="registrationForm.get('password')?.invalid && registrationForm.get('password')?.touched" class="error-message">
+            密碼長度至少需要 8 個字元。
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">手機</label>
+          <input type="tel" id="phone" placeholder="0900111222" formControlName="phone">
+          <div *ngIf="registrationForm.get('phone')?.invalid && registrationForm.get('phone')?.touched" class="error-message">
+            手機為必填欄位。
+          </div>
+        </div>
+
+        <!-- [新增] 顯示後端回傳的錯誤訊息 -->
+        <div *ngIf="errorMessage" class="error-message backend-error">
+          {{ errorMessage }}
+        </div>
+
+        <button type="submit" class="register-button" [disabled]="registrationForm.invalid">創建</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="result-container">
+    <h3>{{ question }}</h3>
+    <div class="toggle-bar">
+        <button (click)="toggleAnswers()">
+            {{ showAnswers ? '點擊關閉回答' : '查看所有答案' }}
+        </button>
+    </div>
+    <div *ngIf="showAnswers" class="answers-list">
+        <ol>
+            <li *ngFor="let answer of answers; let i = index">
+                {{ answer }}
+            </li>
+        </ol>
+    </div>
+</div>

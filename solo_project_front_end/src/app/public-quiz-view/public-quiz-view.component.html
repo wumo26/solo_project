@@ -1,0 +1,14 @@
+<section class="view-page" *ngIf="quiz; else failed">
+  <a routerLink="/public" class="back-link">&#36820;&#22238;&#20844;&#38283;&#21839;&#21367;</a>
+  <app-quiz-readonly-content [quiz]="quiz"></app-quiz-readonly-content>
+  <article class="answer-card" *ngIf="statistics">
+    <h2>&#20854;&#20182;&#20154;&#30340;&#22238;&#31572;</h2><p class="respondents">&#20849; {{ statistics.totalRespondents }} &#20154;&#22635;&#31572;</p>
+    <div class="answer-question" *ngFor="let stat of statistics.questionStats">
+      <h3>{{ stat.questionNum }}. {{ stat.questionTitle }}</h3>
+      <div *ngIf="stat.optionStats?.length" class="option-stats"><div *ngFor="let option of stat.optionStats" class="option-stat-item"><div class="option-text">{{ option.optionText }}</div><div class="progress-bar-container"><div class="progress-bar" [style.width.%]="option.percentage"></div></div><div class="option-details">{{ option.selectedCount }} &#20154;&#65288;{{ option.percentage | number:'1.1-1' }}%&#65289;</div></div></div>
+      <div *ngIf="stat.textAnswers?.length" class="text-answers"><p *ngFor="let answer of stat.textAnswers">{{ answer }}</p></div>
+      <p *ngIf="!stat.optionStats?.length && !stat.textAnswers?.length" class="empty-answer">&#23578;&#28961;&#22238;&#31572;</p>
+    </div>
+  </article>
+</section>
+<ng-template #failed><p class="error-message">{{ error || '\u8f09\u5165\u554f\u5377\u4e2d\u2026' }}</p></ng-template>

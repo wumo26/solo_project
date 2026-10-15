@@ -1,0 +1,30 @@
+﻿<section class="quiz-list-page">
+  <header class="page-header">
+    <h1 *ngIf="isMine">&#25105;&#24314;&#31435;&#30340;&#21839;&#21367;</h1>
+    <h1 *ngIf="!isMine">&#20840;&#37096;&#21839;&#21367;</h1>
+    <button mat-button class="delete-button" (click)="deleteSelected()" [disabled]="!selectedIds.size">&#21034;&#38500;&#36984;&#21462;&#38917;&#30446;</button>
+  </header>
+  <section class="filter-panel">
+    <label><span>&#21839;&#21367;&#21517;&#31281;</span><input type="search" [(ngModel)]="titleFilter" (ngModelChange)="applyFilters()" placeholder="&#36664;&#20837;&#27161;&#38988;&#38364;&#37749;&#23383;"></label>
+    <label><span>&#22635;&#23531;&#26085;&#26399;</span><input type="date" [(ngModel)]="availableDateFilter" (ngModelChange)="applyFilters()"></label>
+    <button mat-button class="clear-filter-button" type="button" (click)="clearFilters()">&#28165;&#38500;&#31721;&#36984;</button>
+  </section>
+  <div class="table-card">
+    <table mat-table [dataSource]="dataSource" class="quiz-table">
+      <ng-container matColumnDef="select"><th mat-header-cell *matHeaderCellDef><mat-checkbox (change)="toggleSelectAll($event.checked)" [checked]="isAllSelected()"></mat-checkbox></th><td mat-cell *matCellDef="let row"><mat-checkbox (change)="toggleSelect(row.id)" [checked]="selectedIds.has(row.id)"></mat-checkbox></td></ng-container>
+      <ng-container matColumnDef="name"><th mat-header-cell *matHeaderCellDef>&#21839;&#21367;&#21517;&#31281;</th><td mat-cell *matCellDef="let row" class="quiz-title"><div class="title-line"><button mat-icon-button class="pin-button" [class.is-pinned]="row.isPinned" (click)="togglePinned(row.id, !row.isPinned)" [disabled]="isUpdatingStatus[row.id]" [attr.aria-label]="row.isPinned ? 'Unpin quiz' : 'Pin quiz'"><mat-icon>push_pin</mat-icon></button><span>{{ row.title }}</span></div><small>&#24314;&#31435;&#32773;&#65306;{{ creatorName(row) }}</small></td></ng-container>
+      <ng-container matColumnDef="startDate"><th mat-header-cell *matHeaderCellDef>&#38283;&#22987;&#26085;&#26399;</th><td mat-cell *matCellDef="let row">{{ row.startDate | date:'yyyy/MM/dd' }}</td></ng-container>
+      <ng-container matColumnDef="endDate"><th mat-header-cell *matHeaderCellDef>&#32080;&#26463;&#26085;&#26399;</th><td mat-cell *matCellDef="let row">{{ row.endDate | date:'yyyy/MM/dd' }}</td></ng-container>
+      <ng-container matColumnDef="status"><th mat-header-cell *matHeaderCellDef>&#29376;&#24907;</th><td mat-cell *matCellDef="let row"><span class="status-badge" [class.published]="row.isPublished" [class.closed]="row.isClosed">{{ statusLabel(row) }}</span></td></ng-container>
+      <ng-container matColumnDef="actions"><th mat-header-cell *matHeaderCellDef>&#25805;&#20316;</th><td mat-cell *matCellDef="let row" class="actions-cell"><div class="action-group"><button *ngIf="!row.isPublished && !row.isClosed" mat-button class="action-button primary-action" (click)="publishQuiz(row.id)" [disabled]="isUpdatingStatus[row.id]">&#30332;&#24067;</button><button *ngIf="row.isPublished" mat-button class="action-button end-action" (click)="endPublication(row.id)" [disabled]="isUpdatingStatus[row.id]">&#32080;&#26463;&#30332;&#24067;</button><button *ngIf="row.isPublished" mat-button class="action-button" (click)="startQuiz(row.id)">&#22635;&#23531;</button><button *ngIf="row.isPublished || row.isClosed" mat-button class="action-button" (click)="viewStats(row.id)">&#26597;&#30475;&#22238;&#35206;</button><button *ngIf="!row.isPublished && !row.isClosed" mat-button class="action-button" (click)="editQuiz(row.id)">&#32232;&#36655;</button><mat-progress-spinner *ngIf="isUpdatingStatus[row.id]" diameter="20" mode="indeterminate"></mat-progress-spinner></div></td></ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr><tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+  </div>
+</section>
+
+
+
+
+
+

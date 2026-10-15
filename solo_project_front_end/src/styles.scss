@@ -1,0 +1,60 @@
+﻿:root {
+  --app-ink: #26354d;
+  --app-muted: #66758c;
+  --app-primary: #b45440;
+  --app-primary-soft: #faece7;
+  --app-page: #f6f8fc;
+  --app-surface: #ffffff;
+  --app-line: #e2e8f2;
+  --app-success: #217345;
+  --app-warn: #a96712;
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--app-page);
+  color: var(--app-ink);
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+button, input, textarea, select { font: inherit; }
+h1, h2, h3, h4, h5, h6, .mat-mdc-card-title, .mat-mdc-dialog-title {
+  margin-top: 0;
+  color: var(--app-ink);
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: .025em;
+}
+p, .mat-mdc-card-subtitle, .mat-mdc-form-field-hint, .mat-mdc-paginator { color: var(--app-muted); }
+
+.mat-mdc-button, .mat-mdc-raised-button, .mat-mdc-unelevated-button, .mat-mdc-outlined-button {
+  min-height: 40px;
+  border: 0 !important;
+  border-radius: 10px !important;
+  font-family: inherit !important;
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+.mat-mdc-card { border-radius: 16px !important; box-shadow: 0 10px 28px rgba(38, 53, 77, .08) !important; }
+.mat-mdc-header-cell { color: #43567c !important; font-weight: 700 !important; }
+
+.mat-mdc-form-field {
+  .mat-mdc-text-field-wrapper { border-radius: 10px; background: #fbfcff; }
+  .mat-mdc-form-field-infix { min-height: 58px; padding: 27px 16px 10px !important; }
+  .mat-mdc-form-field-flex { align-items: flex-start; }
+  .mdc-notched-outline__leading, .mdc-notched-outline__notch, .mdc-notched-outline__trailing { border-color: #dce3ef !important; border-width: 1px !important; }
+  &:hover .mdc-notched-outline__leading, &:hover .mdc-notched-outline__notch, &:hover .mdc-notched-outline__trailing { border-color: #bdc9df !important; }
+  &.mat-focused .mdc-notched-outline__leading, &.mat-focused .mdc-notched-outline__notch, &.mat-focused .mdc-notched-outline__trailing { border-color: var(--app-primary) !important; }
+  input.mat-mdc-input-element, textarea.mat-mdc-input-element { padding: 2px 0 0 !important; }
+}
+
+.mat-datepicker-content, .mat-datepicker-content .mat-calendar, .mat-mdc-menu-panel, .mat-mdc-select-panel, .mat-autocomplete-panel { background: #fff !important; opacity: 1 !important; }
+.mat-datepicker-content, .mat-mdc-menu-panel, .mat-mdc-select-panel, .mat-autocomplete-panel { border: 1px solid var(--app-line); border-radius: 12px !important; box-shadow: 0 14px 32px rgba(36, 54, 83, .18) !important; }
+.mat-mdc-menu-content, .mat-mdc-option { background: #fff !important; }
+.mat-mdc-menu-item { font-family: inherit !important; color: #30415f !important; }
+.cdk-overlay-container { z-index: 1100; }

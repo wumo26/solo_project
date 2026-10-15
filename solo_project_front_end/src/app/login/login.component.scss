@@ -1,0 +1,117 @@
+﻿:host {
+  display: block;
+  height: 100vh;
+  background-color: #F8F4EC; /* ??銝剔?蝐唾? */
+}
+
+.login-container {
+  display: flex;
+  height: 100%;
+}
+
+.illustration-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.illustration-panel img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.form-panel {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content {
+  width: 360px;
+}
+
+h1 {
+  font-size: 48px;
+  color: #A94D3B;
+  font-weight: bold;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.login-button {
+  background-color: #A94D3B;
+  color: white;
+  height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #666;
+}
+
+.signup-link a {
+  color: #A94D3B;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+/* 霈?mat-error ??擃?敺桀之銝暺?*/
+mat-error {
+  font-size: 13px;
+}
+.account-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 24px;
+}
+.create-account,
+.guest-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 18px;
+  border-radius: 10px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.create-account { color: #a94d3b; }
+.guest-button {
+  color: #fff;
+  background: #b45440;
+  box-shadow: 0 5px 12px rgba(82, 105, 216, .2);
+}
+.guest-button:hover { background: #4158c5; }
+.guest-button { color: #A94D3B; background: transparent; box-shadow: none; }
+.guest-button:hover { color: #8e402f; background: transparent; }
+.login-error { margin: -4px 0 2px; color: #b23e3e; font-size: 14px; line-height: 1.5; text-align: center; }
+

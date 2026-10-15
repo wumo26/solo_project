@@ -1,0 +1,20 @@
+
+src/app/
+├── pages/
+│   ├── login/
+│   │   ├── login.component.ts
+│   │   ├── login.component.html
+│   │   └── login.component.scss
+│   ├── survey-fill/
+│   │   ├── survey-fill.component.ts
+│   │   ├── survey-fill.component.html
+│   │   └── survey-fill.component.scss
+│   ├── survey/
+│   │   ├── survey.component.ts
+│   │   ├── survey.component.html
+│   │   └── survey.component.scss
+│   └── survey-result/
+│       ├── survey-result.component.ts
+│       ├── survey-result.component.html
+│       └── survey-result.component.scss
+└── styles.scss

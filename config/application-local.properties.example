@@ -1,0 +1,4 @@
+# Copy this file to application-local.properties and enter your local values.
+spring.datasource.password=
+# Use a random secret of at least 32 UTF-8 bytes for HS256.
+jwt.secret=replace-with-your-own-random-secret-at-least-32-bytes

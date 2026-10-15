@@ -1,0 +1,19 @@
+﻿<section class="take-container" *ngIf="quizData">
+  <mat-card class="take-card">
+    <header class="quiz-heading"><h1>{{ quizData.title }}</h1><p *ngIf="quizData.description">{{ quizData.description }}</p></header>
+    <mat-card-content>
+      <form [formGroup]="submissionForm" (ngSubmit)="onSubmit()"><div formArrayName="answers">
+        <section *ngFor="let question of quizData.questions; let i = index" [formGroupName]="i" class="question-block">
+          <h2>{{ i + 1 }}. {{ question.title }} <span *ngIf="question.isRequired" class="required-star">*</span></h2>
+          <ng-container [ngSwitch]="question.type">
+            <mat-radio-group *ngSwitchCase="'SINGLE'" class="options-group" formControlName="answer"><mat-radio-button *ngFor="let option of question.options" [value]="option.id">{{ option.optionText }}</mat-radio-button></mat-radio-group>
+            <div *ngSwitchCase="'MULTI'" class="options-group"><mat-checkbox *ngFor="let option of question.options" [formControlName]="option.optionCode">{{ option.optionText }}</mat-checkbox></div>
+            <mat-form-field *ngSwitchCase="'TEXT'" appearance="outline" class="full-width"><mat-label>您的回答</mat-label><textarea matInput formControlName="answer" rows="4"></textarea></mat-form-field>
+          </ng-container>
+        </section>
+      </div><div class="actions"><button mat-button type="button" class="return-list-button" (click)="returnToList()">&#36820;&#22238;&#21015;&#34920;</button><button mat-flat-button type="submit">&#25552;&#20132;&#21839;&#21367;</button></div></form>
+    </mat-card-content>
+  </mat-card>
+</section>
+
+

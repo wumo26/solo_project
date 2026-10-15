@@ -1,0 +1,30 @@
+﻿<div class="sidebar" [class.collapsed]="!(isSidebarOpen$ | async)">
+  <div class="sidebar-header">
+    <span class="logo-text" *ngIf="isSidebarOpen$ | async">問卷系統</span>
+    <button class="toggle-btn" (click)="toggleSidebar()" aria-label="展開或收合側邊欄"><mat-icon>menu</mat-icon></button>
+  </div>
+
+  <ul>
+    <li *ngIf="!currentUser"><a routerLink="/public" routerLinkActive="active"><span class="icon"><mat-icon>list</mat-icon></span><span class="text">公開問卷</span></a></li>
+    <ng-container *ngIf="currentUser">
+      <li><a routerLink="/quiz-list" routerLinkActive="active"><span class="icon"><mat-icon>list</mat-icon></span><span class="text">全部問卷</span></a></li>
+      <li><a routerLink="/my-quizzes" routerLinkActive="active"><span class="icon"><mat-icon>folder_shared</mat-icon></span><span class="text">我建立的問卷</span></a></li>
+      <li><a routerLink="/quiz/new" routerLinkActive="active"><span class="icon"><mat-icon>add</mat-icon></span><span class="text">新增問卷</span></a></li>
+      <li><a routerLink="/profile" routerLinkActive="active"><span class="icon"><mat-icon>person</mat-icon></span><span class="text">個人資料</span></a></li>
+    </ng-container>
+  </ul>
+
+  <div class="user-info-section">
+    <ng-container *ngIf="currentUser; else guestView">
+      <div class="user-details"><span class="user-name">{{ currentUser.name || '使用者' }}</span><span class="user-email">{{ currentUser.email }}</span></div>
+    </ng-container>
+    <ng-template #guestView>
+      <a routerLink="/login" class="guest-login"><span class="icon"><mat-icon>login</mat-icon></span><span class="text">登入</span></a>
+    </ng-template>
+  </div>
+  <div class="logout-section" *ngIf="currentUser"><a (click)="logout()"><span class="icon"><mat-icon>logout</mat-icon></span><span class="text">登出</span></a></div>
+</div>
+
+
+
+

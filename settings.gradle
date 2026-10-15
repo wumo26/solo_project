@@ -1,0 +1,2 @@
+rootProject.name = 'solo_project'
+include 'solo_project_backend_end'

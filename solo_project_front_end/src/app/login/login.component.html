@@ -1,0 +1,12 @@
+﻿<div class="login-container">
+  <div class="illustration-panel"><img src="assets/images/login_image.jpg" alt="問卷系統登入插圖"></div>
+  <div class="form-panel"><div class="form-content">
+    <h1>登入</h1>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline"><mat-label>電子郵件</mat-label><input matInput type="email" formControlName="email"><mat-error *ngIf="loginForm.get('email')?.hasError('required')">請輸入電子郵件</mat-error><mat-error *ngIf="loginForm.get('email')?.hasError('email')">請輸入正確的電子郵件格式</mat-error></mat-form-field>
+      <mat-form-field appearance="outline"><mat-label>密碼</mat-label><input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password"><button mat-icon-button matSuffix (click)="togglePasswordVisibility()" type="button" aria-label="顯示或隱藏密碼"><mat-icon>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon></button><mat-error *ngIf="loginForm.get('password')?.hasError('required')">請輸入密碼</mat-error><mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">密碼至少需要 8 個字元</mat-error></mat-form-field>
+      <p *ngIf="errorMessage" class="login-error">{{ errorMessage }}</p><button mat-flat-button class="login-button" type="submit">登入</button>
+    </form>
+    <div class="account-actions"><a routerLink="/register" class="create-account">創建帳號</a><a routerLink="/public" class="guest-button">訪客登入</a></div>
+  </div></div>
+</div>

@@ -1,0 +1,21 @@
+node_modules
+# 套件與 Angular 快取／建置產物
+node_modules/
+.angular/
+dist/
+build/
+
+# IDE 與系統設定
+.idea/
+.settings/
+.vscode/
+*.iml
+.project
+
+# 前端資料夾內誤放的後端內容
+quiz1150512/
+gradle/
+.gradle/
+gradlew
+gradlew.bat
+settings.gradle

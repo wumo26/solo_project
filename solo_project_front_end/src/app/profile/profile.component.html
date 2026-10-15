@@ -1,0 +1,23 @@
+﻿<section class="profile-page">
+  <header class="profile-hero"><h1>&#20491;&#20154;&#36039;&#26009;</h1></header>
+  <mat-card class="profile-card"><mat-card-content>
+    <p *ngIf="loading" class="loading">&#27491;&#22312;&#35712;&#21462;&#20491;&#20154;&#36039;&#26009;&#8230;</p>
+    <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="save()">
+      <h2>&#22522;&#26412;&#36039;&#35338;</h2>
+      <div class="form-grid">
+        <mat-form-field appearance="fill"><mat-label>&#22995;&#21517;</mat-label><input matInput formControlName="name" autocomplete="name"></mat-form-field>
+        <mat-form-field appearance="fill"><mat-label>&#38651;&#35441;</mat-label><input matInput formControlName="phone" autocomplete="tel"></mat-form-field>
+        <mat-form-field appearance="fill"><mat-label>&#38651;&#23376;&#37109;&#20214;</mat-label><input matInput formControlName="email"></mat-form-field>
+        <mat-form-field appearance="fill"><mat-label>&#24180;&#40801;</mat-label><input matInput type="number" min="0" max="9999" formControlName="age"></mat-form-field>
+      </div>
+      <p class="notice success" *ngIf="message">{{ message }}</p>
+      <p class="notice error" *ngIf="error">{{ error }}</p>
+      <div class="form-actions"><button mat-flat-button color="primary" type="submit" [disabled]="saving">{{ saving ? '\u5132\u5b58\u4e2d\u2026' : '\u5132\u5b58\u8b8a\u66f4' }}</button></div>
+    </form>
+  </mat-card-content></mat-card>
+  <section class="response-history">
+    <header><h2>&#25105;&#30340;&#22635;&#31572;&#32000;&#37636;</h2><p>&#26597;&#30475;&#26366;&#32147;&#22238;&#31572;&#36942;&#30340;&#21839;&#21367;&#33287;&#20839;&#23481;&#12290;</p></header>
+    <div *ngIf="!responses.length" class="empty-history">&#23578;&#28961;&#22635;&#31572;&#32000;&#37636;&#12290;</div>
+    <article *ngFor="let response of responses" class="response-card"><h3>{{ response.quizTitle }}</h3><p *ngFor="let answer of response.answers"><strong>{{ answer.questionTitle }}</strong><span>{{ answer.answer }}</span></p></article>
+  </section>
+</section>

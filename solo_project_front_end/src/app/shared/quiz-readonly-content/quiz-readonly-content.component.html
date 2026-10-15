@@ -1,0 +1,12 @@
+<article class="readonly-card">
+  <header>
+    <h1>{{ quiz.title }}</h1>
+    <p *ngIf="quiz.description">{{ quiz.description }}</p>
+    <span *ngIf="showDates">{{ quiz.startDate | date:'yyyy/MM/dd' }} 至 {{ quiz.endDate | date:'yyyy/MM/dd' }}</span>
+  </header>
+  <section class="question" *ngFor="let question of quiz.questions; let index = index">
+    <div class="question-heading"><span class="type-label">{{ typeName(question.type) }}</span><h2>{{ index + 1 }}. {{ question.title }}</h2></div>
+    <div class="option" *ngFor="let option of question.options"><span class="option-marker" [class.multiple]="question.type === 'MULTI'"></span>{{ option.optionText }}</div>
+    <p *ngIf="question.type === 'TEXT'" class="text-hint">請以文字回答</p>
+  </section>
+</article>

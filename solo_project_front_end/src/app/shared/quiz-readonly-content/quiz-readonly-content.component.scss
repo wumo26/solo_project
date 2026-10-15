@@ -1,0 +1,15 @@
+.readonly-card { overflow: hidden; background: transparent; border: 0; border-radius: 16px; padding: 0; box-shadow: none; }
+.readonly-card > header { padding: 34px 38px 25px; background: linear-gradient(135deg, #fcf6f2, #f8ece6); border-bottom: 1px solid #eadbd3; }
+h1 { margin: 0; color: #3e302d; font-size: 32px; line-height: 1.25; font-weight: 800; letter-spacing: .02em; }
+header p { max-width: 680px; margin: 14px 0 0; color: var(--app-muted); font-size: 16px; line-height: 1.7; }
+header span { display: block; margin-top: 10px; color: #8a7a73; font-size: 14px; }
+.question { margin: 24px 0; padding: 24px; border: 1px solid #edf0f5; border-radius: 14px; background: #fff; }
+.question:first-of-type { margin-top: 24px; }
+.question-heading { display: block; }
+.type-label { display: none; }
+.question h2 { margin: 0 0 20px; color: #3f4c65; font-size: 21px; }
+.option { display: flex; align-items: center; gap: 14px; margin: 14px 0; color: #26354d; font-size: 18px; }
+.option-marker { width: 18px; height: 18px; flex: 0 0 18px; border: 2px solid #78869a; border-radius: 50%; }
+.option-marker.multiple { border-radius: 3px; }
+.text-hint { margin: 0; color: #8190a4; font-size: 16px; }
+@media(max-width:600px) { .readonly-card > header { padding: 25px 22px; } h1 { font-size: 27px; } .question { padding: 18px; } }
